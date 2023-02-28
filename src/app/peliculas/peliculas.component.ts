@@ -9,7 +9,6 @@ import { IMDBService } from '../imdb.service';
 })
 export class PeliculasComponent {
   observable: any
-  peliculas: Pelicula[] = []
 
   constructor(private peliculaService: IMDBService) { }
 
@@ -18,6 +17,6 @@ export class PeliculasComponent {
     let url: any = "https://imdb-api.com/en/API/SearchMovie/k_1uxldlee/" + input.value
 
     this.peliculaService.getLista(url).subscribe(peliculas => this.observable = peliculas)
-    this.peliculas = this.observable.results;
+
   }
 }

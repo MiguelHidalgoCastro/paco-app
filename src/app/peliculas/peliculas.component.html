@@ -13,7 +13,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let pelis of peliculas">
+      <tr *ngFor="let pelis of observable.results">
         <td><img src={{pelis.image}} alt="" width="100"></td>
         <td>{{pelis.title}}</td>
         <td>{{pelis.resultType}}</td>
