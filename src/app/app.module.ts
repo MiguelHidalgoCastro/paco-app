@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { PeliculasComponent } from './peliculas/peliculas.component';
 import { FavoritasComponent } from './favoritas/favoritas.component';
 import { CreditosComponent } from './creditos/creditos.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,11 +15,12 @@ import { CreditosComponent } from './creditos/creditos.component';
     HomeComponent,
     PeliculasComponent,
     FavoritasComponent,
-    CreditosComponent
+    CreditosComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

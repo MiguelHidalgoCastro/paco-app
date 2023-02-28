@@ -1,6 +1,7 @@
 export interface Pelicula {
-    id: number;
-    imagen: File;
-    titulo: string;
-    descripcion: string;
+    id: string;
+    resultType: string;
+    image: string;
+    title: string;
+    description: string;
 }

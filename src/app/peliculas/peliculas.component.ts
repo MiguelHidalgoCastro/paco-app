@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Pelicula } from '../pelicula';
-import { PELICULAS } from '../mock-peliculas';
+import { IMDBService } from '../imdb.service';
 
 @Component({
   selector: 'app-peliculas',
@@ -8,10 +8,16 @@ import { PELICULAS } from '../mock-peliculas';
   styleUrls: ['./peliculas.component.css']
 })
 export class PeliculasComponent {
+  observable: any
   peliculas: Pelicula[] = []
 
-  list(){
-    this.peliculas = PELICULAS
-  }
+  constructor(private peliculaService: IMDBService) { }
 
+  list() {
+    let input: any = document.getElementById('npelicula')
+    let url: any = "https://imdb-api.com/en/API/SearchMovie/k_1uxldlee/" + input.value
+
+    this.peliculaService.getLista(url).subscribe(peliculas => this.observable = peliculas)
+    this.peliculas = this.observable.results;
+  }
 }
