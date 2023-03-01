@@ -10,14 +10,16 @@
         <th scope="col">Nombre</th>
         <th scope="col">Tipo</th>
         <th scope="col">Descripcion</th>
+        <th scope="col">Favoritos</th>
       </tr>
     </thead>
-    <tbody>
-      <tr *ngFor="let pelis of observable.results">
-        <td><img src={{pelis.image}} alt="" width="100"></td>
-        <td>{{pelis.title}}</td>
-        <td>{{pelis.resultType}}</td>
-        <td> {{pelis.description}}</td>
+    <tbody *ngIf="observable">
+      <tr *ngFor="let peli of observable.results">
+        <td><img src={{peli.image}} alt="" width="100"></td>
+        <td>{{peli.title}}</td>
+        <td>{{peli.resultType}}</td>
+        <td> {{peli.description}}</td>
+        <td (click)="save(peli)"><span class="btn btn-warning" id={{peli.id}}><em class="bi bi-star"></em></span></td>
       </tr>
 
     </tbody>

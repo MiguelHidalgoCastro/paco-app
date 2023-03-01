@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { IdbService } from './idb.service';
+import { Pelicula } from './pelicula';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'paco-app';
+
+  constructor() {
+  
+  }
 }

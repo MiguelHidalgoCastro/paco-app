@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { Pelicula } from '../pelicula';
 import { IMDBService } from '../imdb.service';
+import { AppComponent } from '../app.component';
+import { IdbService } from '../idb.service';
+
 
 @Component({
   selector: 'app-peliculas',
@@ -8,9 +11,11 @@ import { IMDBService } from '../imdb.service';
   styleUrls: ['./peliculas.component.css']
 })
 export class PeliculasComponent {
-  observable: any
-
-  constructor(private peliculaService: IMDBService) { }
+  public observable: any
+  public conexion: any
+  constructor(private peliculaService: IMDBService) {
+    this.conexion = new IdbService(this.iniciado.bind(this))
+  }
 
   list() {
     let input: any = document.getElementById('npelicula')
@@ -18,5 +23,18 @@ export class PeliculasComponent {
 
     this.peliculaService.getLista(url).subscribe(peliculas => this.observable = peliculas)
 
+  }
+
+  iniciado(){
+    console.log('iniciado');
+  }
+  save(peli: Pelicula) {
+    //aquí tengo la peli
+    console.log(peli);
+    this.conexion.insertar(peli, this.insertarOK.bind(this))
+  }
+
+  insertarOK() {
+    console.log('insertado');
   }
 }
