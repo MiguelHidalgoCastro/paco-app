@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Pelicula } from './pelicula';
+import { MensajeComponent } from './mensaje/mensaje.component';
 
 @Injectable({
   providedIn: 'root'
@@ -24,7 +25,7 @@ export class IdbService {
   }
 
   crear(): void {
-    this.conexion.createObjectStore('favoritas', {keyPath: 'id'})
+    this.conexion.createObjectStore('favoritas', { keyPath: 'id' })
   }
 
 
@@ -35,8 +36,19 @@ export class IdbService {
     }
     peticion.onsuccess = (event: any) => {
       pelicula.id = event.target.result
-      console.log(pelicula.id)
       callback()
+    }
+  }
+
+  listar(callback: Function): void {
+    const objectStore = this.conexion.transaction(['favoritas'], 'readwrite').objectStore('favoritas')
+    const peticion = objectStore.getAll()
+    peticion.onerror = () => {
+      console.log("no se ha podido obtener elementos");
+    }
+    peticion.onsuccess = () => {
+      callback(peticion.result)
+      new MensajeComponent().crearmensaje('Listado','Se ha listado las películas correctamente','info')
     }
   }
 }
