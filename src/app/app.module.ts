@@ -8,6 +8,7 @@ import { PeliculasComponent } from './peliculas/peliculas.component';
 import { FavoritasComponent } from './favoritas/favoritas.component';
 import { CreditosComponent } from './creditos/creditos.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MensajeComponent } from './mensaje/mensaje.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
     PeliculasComponent,
     FavoritasComponent,
     CreditosComponent,
+    MensajeComponent,
   ],
   imports: [
     BrowserModule,
